@@ -1,4 +1,4 @@
-Algoritmo Ejemplo01
+Algoritmo SueldoNeto
 	Definir Nombre Como Caracter
 	Definir Apellidos Como caracter  
 	Definir Sueldo, Sueldo2, total Como Entero
