@@ -3,15 +3,15 @@ Algoritmo ISTJorgeBonilla
 	Definir Carrera Como Entero
 	Definir conFecha Como Numero
 	Definir Matricula, Mensualidad Como Entero
-	Escribir "* --- Instituto Superior Tecnológico Jorge Bonilla ---***"
+	Escribir "* --- Instituto Superior TecnolÃ³gico Jorge Bonilla ---***"
 	Escribir "SISTEMA DE PAGOS DE MATRICULAS Y PENSIONES"
 	Escribir "Ingrese el nombre del estudiante: " Sin Saltar
 	Leer NomEstudiante
-	Escribir "¿Qué carrera estudia?"
-	Escribir "[1] Computación e Informática"
+	Escribir "Â¿QuÃ© carrera estudia?"
+	Escribir "[1] ComputaciÃ³n e InformÃ¡tica"
 	Escribir "[2] Secretariado Ejecutivo" 
-	Escribir "[3] Administración"
-	Escribir "Seleccione la opción: " Sin Saltar
+	Escribir "[3] AdministraciÃ³n"
+	Escribir "Seleccione la opciÃ³n: " Sin Saltar
 	Leer Carrera
 	Si (Carrera = 1) Entonces
 		Matricula = 300
@@ -25,23 +25,25 @@ Algoritmo ISTJorgeBonilla
 		Matricula = 250
 		Mensualidad = 400
 	FinSi	
-	Escribir "¿Está en el rango de fecha permitido?" Sin Saltar
+	Escribir "Â¿EstÃ¡ en el rango de fecha permitido?" Sin Saltar
 	Escribir "(1) = SI (0) = NO" Sin Saltar
 	Leer conFecha
 	Si (conFecha = 1) Entonces
 		Definir concepto Como Entero
 		Escribir "El estudiante esta dentro del rango de las fechas permitidas"
-		Escribir "¿Qué concepto desea pagar?"
+		Escribir "Â¿QuÃ© concepto desea pagar?"
 		Escribir "[1] Matricula o mensualidad"
 		Escribir "[2] Matricula y mensualidades"
 		Escribir "[3] Todo el semestre" 
 		Escribir "[4] Toda la carrera"
 		Escribir "Seleccione el concepto a pagar: " Sin Saltar
 		Leer concepto
+		Definir NroMensualidades Como Entero
+		Definir NueMatricula, NueMensualidad, MontoPagar Como Real
 		Si (concepto = 1) Entonces
-			//Condición 1: Pago de matrícula o mensualidad no hay descuento
+			//CondiciÃ³n 1: Pago de matrÃ­cula o mensualidad no hay descuento
 			Definir OpcionMM Como Entero
-			Escribir "Elige la opción para pagar: "
+			Escribir "Elige la opciÃ³n para pagar: "
 			Escribir "[1] Matricula"
 			Escribir "[2] Mensualidad"
 			Leer OpcionMM
@@ -50,43 +52,35 @@ Algoritmo ISTJorgeBonilla
 			SiNo
 				Escribir "Usted debe pagar: " Mensualidad
 			Fin Si
-		SiNo
-			Escribir "No se puede realizar la operación"
-		Fin Si
+		FinSi
 		Si (concepto = 2) Entonces
-			//Condición 2: Pago de matrícula + 2 hasta 4 mensualidades 5% de descuento en la matricula y el 10% en las pensiones.
-			Definir NroMensualidades Como Entero
-			Escribir "¿Cuantas mensualidades desea pagar?"
+			//CondiciÃ³n 2: Pago de matrÃ­cula + 2 hasta 4 mensualidades 5% de descuento en la matricula y el 10% en las pensiones.
+			Escribir "Â¿Cuantas mensualidades desea pagar?"
 			Leer NroMensualidades
 			Si (NroMensualidades >= 2 )  Y (NroMensualidades <= 4 )  Entonces
-				Definir NueMatricula, NueMensualidad, MontoPagar Como Real
 				NueMatricula = Matricula * 0.05
 				NueMensualidad = Mensualidad * 0.10
 				MontoPagar = (Matricula-NueMatricula) + ((Mensualidad - NueMensualidad)* NroMensualidades)
 				Escribir "Usted debe pagar: " MontoPagar
 			SiNo
-				Escribir "88888No se puede realizar la operación"
+				Escribir "No se puede realizar la operaciÃ³n"
 			Fin Si
-			Si (Concepto = 3) Entonces
-				Definir NueMatricula, NueMensualidad, MontoPagar Como Real
-				NueMatricula = Matricula * 0.10
-				NueMensualidad = Mensualidad * 0.20
-				MontoPagar = (NueMatricula-Matricula) + ((NueMensualidad - Mensualidad)*5)
-				Escribir "Usted debe pagar: " MontoPagar
-			FinSi
-			Si (concepto = 4) Entonces
-				Definir NueMatricula, NueMensualidad, MontoPagar Como Real
-				NueMatricula = Matricula * 0.20
-				NueMensualidad = Mensualidad * 0.40
-				MontoPagar = (NueMatricula-Matricula) + ((NueMensualidad - Mensualidad)*30)
-				Escribir "Usted debe pagar: " MontoPagar
-			FinSi
 		FinSi
-			
-			
+		Si (Concepto = 3) Entonces
+			NueMatricula = Matricula * 0.10
+			NueMensualidad = Mensualidad * 0.20
+			MontoPagar = (Matricula-NueMatricula) + ((Mensualidad-NueMensualidad)*5)
+			Escribir "Usted debe pagar: " MontoPagar
+		FinSi
+		Si (concepto = 4) Entonces
+			NueMatricula = Matricula * 0.20
+			NueMensualidad = Mensualidad * 0.40
+			MontoPagar = ((Matricula-NueMatricula)*6) + ((Mensualidad-NueMensualidad)*30)
+			Escribir "Usted debe pagar: " MontoPagar
+		FinSi
 	SiNo
 		Escribir "El estudiante esta fuera del rango de las fechas permitidas"
-		// si no está dentro del rango
+		// si no estÃ¡ dentro del rango
 		//de las fechas de matricula y pago de pensiones (cuotas), 
 		//el sistema le genera el 1% de multa por retraso a la mensualidad, 
 	    //de lo contrario se le pueden aplicar las siguientes condiciones:
